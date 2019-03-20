@@ -1,0 +1,1 @@
+{"errors":[{"message":"Variable \"$file\" is never used in operation \"getImage\".","locations":[{"line":2,"column":3}]}]}
