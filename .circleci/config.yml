@@ -32,6 +32,14 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
       # run tests!
-      - run: yarn deploy
+      - run: yarn build
+      - run:
+        command: |
+          npm install -g --silent gh-pages
+          git config user.email "ci-build@klukas.net"
+          git config user.name "ci-build"
+      - add_ssh_keys:
+          fingerprints:
+            - "6b:25:ac:21:3c:bb:8e:20:ec:17:b0:8d:94:6f:9b:04"
+      - run: gh-pages -d public
